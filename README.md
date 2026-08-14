@@ -2,7 +2,7 @@
 
 A graph-database application that models agentic workflows and answers connectivity questions a relational database would find awkward.
 
-**Live demo:** https://your-demo-url.example.com  
+**Live demo:** https://cascade-graph-app.onrender.com  
 **Screen recording:** https://your-recording-link.example.com
 
 ## Why a graph database?
