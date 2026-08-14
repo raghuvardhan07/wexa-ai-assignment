@@ -1,0 +1,12 @@
+services:
+  cascade:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - COGNODB_URI=${COGNODB_URI}
+      - COGNODB_USERNAME=${COGNODB_USERNAME:-cognodb}
+      - COGNODB_PASSWORD=${COGNODB_PASSWORD}
+      - COGNODB_DATABASE=${COGNODB_DATABASE:-neo4j}
+    env_file:
+      - .env

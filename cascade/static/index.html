@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CASCADE — Agentic Workflow Blast-Radius Explorer</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <h1>CASCADE</h1>
+        <p class="tagline">Agentic workflow blast-radius explorer</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <span id="db-status" class="status-pill status-checking">checking…</span>
+      <button id="refresh-btn" class="btn btn-ghost">Refresh</button>
+    </div>
+  </header>
+
+  <div id="error-banner" class="error-banner hidden">
+    <span class="error-title">Database unreachable.</span>
+    <span id="error-detail"></span>
+    <button id="error-retry" class="btn btn-link">Retry</button>
+  </div>
+
+  <main class="layout">
+    <aside class="panel tools-panel">
+      <div class="panel-head">
+        <h2>Tools</h2>
+        <p class="hint">Toggle a tool offline to trigger a graph traversal.</p>
+      </div>
+      <ul id="tool-list" class="tool-list"></ul>
+    </aside>
+
+    <section class="panel goals-panel">
+      <div class="panel-head">
+        <h2>Goals</h2>
+        <div class="summary-inline">
+          <span id="goals-summary" class="hint"></span>
+        </div>
+      </div>
+      <div id="goals-content" class="goals-content">
+        <div id="goals-loading" class="panel-empty hidden">Loading system state…</div>
+        <div id="goals-empty" class="panel-empty hidden">
+          <div class="empty-title">All systems operational</div>
+          <p class="hint">No goals are blocked. Toggle a tool offline to see the blast radius.</p>
+        </div>
+        <ul id="goal-list" class="goal-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel inspector">
+      <div class="panel-head inspector-head">
+        <div>
+          <h2 id="inspector-title">Inspector</h2>
+          <p id="inspector-subtitle" class="hint">Select a goal or tool to see the graph path.</p>
+        </div>
+        <button id="toggle-cypher" class="btn btn-ghost" disabled>Show Cypher</button>
+      </div>
+      <div id="inspector-body" class="inspector-body">
+        <div class="inspector-placeholder">
+          <div class="placeholder-title">Explore the graph</div>
+          <ul class="placeholder-list">
+            <li>Click a <strong>tool</strong> to see which goals it blocks.</li>
+            <li>Click a <strong>goal</strong> to see its critical path and bottleneck.</li>
+            <li>Toggle a tool offline to watch the blast radius update.</li>
+          </ul>
+        </div>
+      </div>
+      <pre id="inspector-cypher" class="inspector-cypher hidden"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

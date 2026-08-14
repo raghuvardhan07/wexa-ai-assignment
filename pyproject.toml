@@ -1,0 +1,23 @@
+[project]
+name = "cascade"
+version = "0.1.0"
+description = "CASCADE — Agentic Workflow Blast-Radius Explorer (Wexa AI CognoDB take-home)"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "neo4j>=5.20",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2",
+    "pydantic-settings>=2",   # env-driven config (also reads .env)
+]
+
+[project.scripts]
+cascade-api = "cascade.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cascade"]
